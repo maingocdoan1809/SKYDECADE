@@ -1,4 +1,4 @@
-const hover = document.querySelectorAll(".video");
+const hoverVideoEvent = document.querySelectorAll(".video");
 const notification = document.querySelector("footer .toast-message");
 const notiSpan = document.getElementById("name-song");
 function animateMessage(target, wrap, title) {
@@ -8,7 +8,7 @@ function animateMessage(target, wrap, title) {
 function removeAnimatedMessage(target) {
   target.style.animation = "none";
 }
-hover.forEach((element) => {
+hoverVideoEvent.forEach((element) => {
   element.addEventListener("click", function (event) {
     const video = element.firstElementChild;
     const name = video.getAttribute("title");
@@ -17,7 +17,7 @@ hover.forEach((element) => {
       video.currentTime = 0;
     };
     if (video.paused) {
-      hover.forEach((other) => {
+      hoverVideoEvent.forEach((other) => {
         const otherVid = other.firstElementChild;
         otherVid.pause();
         removeAnimatedMessage(notification);
@@ -67,20 +67,29 @@ animatedElements.forEach((element) => {
   observer.observe(element);
 });
 
-function obseverVideoLactroi() {
-  const list = [
-    "<li>Lac troi</li>",
-    "<li>Son tung</li>",
-    "<li>1/1/17</li>",
-    "<li>250M view</li>",
-  ];
-  const ul = document.querySelector(".content-body ul");
-  const observerVideo = new IntersectionObserver((entries) => {
-    var i = 0;
-    for (let entry of entries) {
-    }
-  });
-  observerVideo.observe(ul);
+// special thanks audio
+const btn = document.querySelector("button[title='play']");
+const specialthanksAudio = new Audio(
+  "\\videos\\SƠN TÙNG M-TP - SKY DECADE - Lời Tri Ân.mp3"
+);
+function playIcon() {
+  return `<i class="fa-solid fa-play"></i>`;
 }
-
-obseverVideoLactroi();
+function pauseIcon() {
+  return `<i class="fa-duotone fa-pause"></i>`;
+}
+specialthanksAudio.onended = () => {
+  specialthanksAudio.currentTime = 0;
+  btn.innerHTML = playIcon();
+};
+btn.onclick = () => {
+  if (specialthanksAudio.paused) {
+    specialthanksAudio.play();
+    btn.innerHTML = pauseIcon();
+    animateMessage(notification, notiSpan, "Lời tri ân");
+  } else {
+    specialthanksAudio.pause();
+    btn.innerHTML = playIcon();
+    removeAnimatedMessage(notification);
+  }
+};
