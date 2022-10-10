@@ -45,6 +45,9 @@ const observer = new IntersectionObserver(
       if (!entry.isIntersecting) {
         entry.target.style.transform = "translateY(50px)";
         entry.target.style.opacity = "0";
+        if (screen.width <= 550) {
+          return;
+        }
         if (entry.target.classList.contains("float-left")) {
           entry.target.style.transform = "translateX(-50px)";
         }
@@ -92,4 +95,12 @@ btn.onclick = () => {
     btn.innerHTML = playIcon();
     removeAnimatedMessage(notification);
   }
+};
+
+// showing up nav bar when click:
+const controlBtn = document.querySelector(".control");
+const nav = document.querySelector(".main-nav");
+
+controlBtn.onclick = () => {
+  nav.classList.toggle("hide");
 };
