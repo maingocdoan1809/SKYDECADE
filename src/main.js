@@ -43,16 +43,16 @@ const observer = new IntersectionObserver(
   (entries) => {
     for (let entry of entries) {
       if (!entry.isIntersecting) {
-        entry.target.style.transform = "translateY(50px)";
+        entry.target.style.transform = "translateY(30px)";
         entry.target.style.opacity = "0";
         if (screen.width <= 550) {
           return;
         }
         if (entry.target.classList.contains("float-left")) {
-          entry.target.style.transform = "translateX(-50px)";
+          entry.target.style.transform = "translateX(-30px)";
         }
         if (entry.target.classList.contains("float-right")) {
-          entry.target.style.transform = "translateX(50px)";
+          entry.target.style.transform = "translateX(30px)";
         }
       } else {
         entry.target.style.transform = "translate(0, 0)";
@@ -100,7 +100,18 @@ btn.onclick = () => {
 // showing up nav bar when click:
 const controlBtn = document.querySelector(".control");
 const nav = document.querySelector(".main-nav");
-
+function menuIcon() {
+  return `<i class="fa-solid fa-bars"></i>`;
+}
+function cancelIcon() {
+  return `<i class="fa-solid fa-x"></i>`;
+}
 controlBtn.onclick = () => {
-  nav.classList.toggle("hide");
+  if (nav.classList.contains("hide")) {
+    controlBtn.innerHTML = cancelIcon();
+    nav.classList.remove("hide");
+  } else {
+    controlBtn.innerHTML = menuIcon();
+    nav.classList.add("hide");
+  }
 };

@@ -182,7 +182,7 @@ p {
 .special-thanks {
     display: flex;
     flex-direction: column;
-    padding: 10px;
+    padding: 10px 10px 0 10px;
 }
 
 
@@ -339,12 +339,25 @@ strong {
     font-size: 1.7rem;
 }
 
-
 .video:hover * {
     opacity: 1;
 }
 
 
+.main-content:nth-child(4) {
+    min-height: auto;
+}
+
+.main-content>.the-second-gift {
+    display: block;
+    position: relative;
+    min-height: auto;
+    padding: 0;
+}
+
+.the-second-gift img {
+    width: 100%;
+}
 
 @keyframes fadeIn-li {
     20% {
@@ -369,16 +382,23 @@ body {
     position: relative;
 }
 
+footer {
+    display: flex;
+    justify-content: center;
+
+}
+
 footer .toast-message {
     padding: 10px 30px 10px 10px;
-    background-color: #DBDADA;
+    background-color: rgba(255, 0, 0, 0.5);
+    color: rgb(255, 255, 255);
     position: fixed;
     transform: translateY(100px);
-    bottom: 0;
-    width: 100%;
+    bottom: 10px;
+    border-radius: 30px;
+    width: 95%;
     z-index: 1000;
     text-align: right;
-
 }
 
 @keyframes message-show {
