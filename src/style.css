@@ -63,6 +63,7 @@ p {
     padding: 15px;
     display: flex;
     justify-content: right;
+    user-select: none;
 }
 
 .main-nav ul li {
@@ -88,6 +89,7 @@ p {
 /* navigation bar end */
 .main-content {
     min-height: 100vh;
+    position: relative;
 }
 
 .main-content:nth-child(even) {
@@ -95,7 +97,7 @@ p {
 }
 
 /* milestone content */
-.milestone {
+.background {
     position: relative;
     min-height: 100vh;
     display: flex;
@@ -105,7 +107,7 @@ p {
     gap: 50px;
 }
 
-.milestone::after {
+.background::after {
     content: "";
     position: absolute;
     z-index: -1;
@@ -125,7 +127,7 @@ p {
     }
 }
 
-.milestone img {
+.background img {
     display: block;
     width: 15vh;
     border-radius: 14px;
@@ -133,7 +135,7 @@ p {
     animation: img-show 2s linear forwards;
 }
 
-.milestone h1 {
+.background h1 {
     font-size: clamp(40px, 6vw, 4rem);
     opacity: 0;
     background: linear-gradient(180deg, #955855 0%, #1E363A 100%);
@@ -197,14 +199,14 @@ p {
     gap: 20px;
 }
 
-.special-thanks .content .container-img {
+.content .container-img {
     display: flex;
     position: relative;
     justify-content: center;
     align-items: center;
 }
 
-.special-thanks .content .container-img img {
+.content .container-img img {
     border-radius: 14px;
     width: 200px;
 }
@@ -351,12 +353,17 @@ strong {
 }
 
 .main-content>.the-second-gift {
+    position: relative;
     min-height: auto;
     flex-direction: row;
     padding: 0;
 }
 
 .book-ticket {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     min-width: 50%;
     min-height: 300px;
     text-align: center;
@@ -369,7 +376,7 @@ strong {
     color: white;
     border: none;
     background-color: rgb(233, 26, 26);
-    transition: background-color 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
 }
 
 .book-ticket a:hover {
@@ -380,6 +387,13 @@ strong {
 .the-second-gift img {
     width: 100%;
 }
+
+.book-ticket .content-body {
+    color: white;
+    margin: 20px;
+    width: 60%;
+}
+
 
 @keyframes fadeIn-li {
     20% {
@@ -483,12 +497,31 @@ footer .toast-message {
         flex-direction: column;
     }
 
-    .book-ticket a {
-        padding: 5px 10px;
+    .book-ticket {
+        display: block;
+        position: absolute;
+        min-width: 100%;
+        min-height: 100%;
     }
 
-    .book-ticket {
+    .book-ticket a {
+        padding: 5px 10px;
         position: absolute;
-        top: 32%;
+        left: 50%;
+        top: 30%;
+        transform: translateX(-50%);
+    }
+
+
+
+    .book-ticket .content-body {
+        position: absolute;
+        top: 60%;
+        transform: translateY(-50%);
+        width: initial;
+    }
+
+    .the-second-gift img {
+        opacity: 0.7;
     }
 }
