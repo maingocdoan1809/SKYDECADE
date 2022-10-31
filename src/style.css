@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Ubuntu&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Carattere&family=Roboto&family=Ubuntu&display=swap');
 
 :root {
     --radius-logo: 8px;
@@ -357,6 +357,7 @@ strong {
     min-height: auto;
     flex-direction: row;
     padding: 0;
+    overflow: hidden;
 }
 
 .book-ticket {
@@ -394,6 +395,38 @@ strong {
     width: 60%;
 }
 
+.main-content .the-third-gift {
+    flex-direction: column;
+}
+
+.main-content .the-third-gift div:nth-child(2) {
+    width: 80%;
+    text-align: center;
+}
+
+.main-content .the-third-gift span {
+    font-family: 'Carattere';
+    font-size: clamp(10vw, 80px, 13vw);
+    color: #5DA7DB;
+}
+
+.main-content .the-third-gift i {
+    position: absolute;
+    transform: translate(10px, -30px) scaleX(-1);
+    font-size: 50px;
+    font-family: 'fontawesome';
+}
+
+.gallery img {
+    width: 100%;
+    margin: 5px;
+}
+
+.gallery {
+    column-count: 3;
+
+    padding: 50px;
+}
 
 @keyframes fadeIn-li {
     20% {
