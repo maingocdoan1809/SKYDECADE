@@ -269,9 +269,6 @@ p {
     -webkit-text-fill-color: transparent;
 }
 
-strong {
-    color: black;
-}
 
 .the-first-gift .content-body {
     display: grid;
@@ -345,87 +342,50 @@ strong {
     opacity: 1;
 }
 
-
-.main-content:nth-child(4) {
-    position: relative;
-    min-height: auto;
-    background-color: black;
-}
-
-.main-content>.the-second-gift {
-    position: relative;
-    min-height: auto;
-    flex-direction: row;
-    padding: 0;
-    overflow: hidden;
-}
-
-.book-ticket {
+.play-music {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    min-width: 50%;
-    min-height: 300px;
-    text-align: center;
+    flex-direction: row;
 }
 
-.book-ticket a {
-    text-decoration: none;
-    padding: 10px 30px;
-    border-radius: 5px;
-    color: white;
-    border: none;
-    background-color: rgb(233, 26, 26);
-    transition: all 0.5s ease-in-out;
+
+.nav-selection {
+    background-color: #f5f5f5;
 }
 
-.book-ticket a:hover {
-    color: red;
-    background-color: rgb(255, 255, 255);
+.nav-selection ul {
+    list-style: none;
+    margin-top: 15px;
+    padding-right: 10px;
 }
 
-.the-second-gift img {
+.nav-selection li {
+    padding: 7px 25px;
     width: 100%;
+    border-radius: 7px;
 }
 
-.book-ticket .content-body {
-    color: white;
-    margin: 20px;
-    width: 60%;
+.nav-selection li:hover {
+    background-color: red;
 }
 
-.main-content .the-third-gift {
-    flex-direction: column;
-}
-
-.main-content .the-third-gift div:nth-child(2) {
-    width: 80%;
-    text-align: center;
-}
-
-.main-content .the-third-gift span {
-    font-family: 'Carattere';
-    font-size: clamp(10vw, 80px, 13vw);
-    color: #5DA7DB;
-}
-
-.main-content .the-third-gift i {
+.nav-selection li:hover::before {
+    content: "\f04b";
     position: absolute;
-    transform: translate(10px, -30px) scaleX(-1);
-    font-size: 50px;
-    font-family: 'fontawesome';
+    left: 15px;
+    color: white;
 }
 
-.gallery img {
-    width: 100%;
-    margin: 5px;
+.nav-selection li:hover a {
+    color: white;
 }
 
-.gallery {
-    column-count: 3;
+.nav-selection li a {
+    text-decoration: none;
+    color: rgba(0, 0, 0, .65);
+}
 
-    padding: 50px;
+.main-play {
+    flex: 1;
 }
 
 @keyframes fadeIn-li {
@@ -522,39 +482,4 @@ footer .toast-message {
         margin: 30px 0 50px 0;
     }
 
-    .the-second-gift img {
-        width: 100%;
-    }
-
-    .main-content>.the-second-gift {
-        flex-direction: column;
-    }
-
-    .book-ticket {
-        display: block;
-        position: absolute;
-        min-width: 100%;
-        min-height: 100%;
-    }
-
-    .book-ticket a {
-        padding: 5px 10px;
-        position: absolute;
-        left: 50%;
-        top: 30%;
-        transform: translateX(-50%);
-    }
-
-
-
-    .book-ticket .content-body {
-        position: absolute;
-        top: 60%;
-        transform: translateY(-50%);
-        width: initial;
-    }
-
-    .the-second-gift img {
-        opacity: 0.7;
-    }
 }
