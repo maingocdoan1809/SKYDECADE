@@ -92,24 +92,53 @@
         </div>
       </section>
       <section class="main-content play-music">
+        <input type="checkbox" id="control-play" />
+        <label for="control-play" id="control-play-label"></label>
         <div class="nav-selection">
           <div style="padding-left: 10px">
             <div style="text-align: center; opacity: 0.5">
               <span>Explore</span>
             </div>
             <ul>
-              <li><a href="#">Chúng ta của hiện tại</a></li>
-              <li><a href="#">Âm thầm bên em</a></li>
-              <li><a href="#">Chạy ngay đi</a></li>
-              <li><a href="#">Muộn rồi mà sao còn</a></li>
-              <li><a href="#">Hãy trao cho anh</a></li>
-              <li><a href="#">Nơi này có anh</a></li>
-              <li><a href="#">Lạc trôi</a></li>
-              <li><a href="#">There's no one at all</a></li>
+              <li>Chúng ta của hiện tại</li>
+              <li>Âm thầm bên em</li>
+              <li>Chạy ngay đi</li>
+              <li>Muộn rồi mà sao còn</li>
+              <li>Hãy trao cho anh</li>
+              <li>Nơi này có anh</li>
+              <li>Lạc trôi</li>
+              <li>There's no one at all</li>
             </ul>
           </div>
         </div>
-        <div class="main-play"></div>
+        <div class="main-play">
+          <div class="card">
+            <img
+              src="/images/ctcht.png"
+              width="250px"
+              height="250px"
+              style="border-radius: 10px"
+              alt=""
+            />
+            <div class="control-range">
+              <input id="timer" type="range" min="0" max="100" value="0" />
+            </div>
+            <div class="control-btn">
+              <span id="backward-btn"
+                ><i class="fa-light fa-backward"></i
+              ></span>
+              <span id="play-btn""
+                ><i class="fa-light fa-play"></i>
+                <audio
+                  id="play-audio"
+                  title="Chúng ta của hiện tại"
+                  src="/videos/SƠN TÙNG M-TP - SKY DECADE - Lời Tri Ân.mp3"
+                ></audio
+              ></span>
+              <span id="forward-btn"><i class="fa-light fa-forward"></i></span>
+            </div>
+          </div>
+        </div>
       </section>
     </main>
     <footer>

@@ -61,7 +61,7 @@ const observer = new IntersectionObserver(
     }
   },
   {
-    threshold: 0.2,
+    threshold: 0,
   }
 );
 
@@ -114,4 +114,24 @@ controlBtn.onclick = () => {
     controlBtn.innerHTML = menuIcon();
     nav.classList.add("hide");
   }
+};
+
+// audio element:
+
+const audio = document.getElementById("play-audio");
+const playBtn = document.getElementById("play-btn");
+const timer = document.getElementById("timer");
+playBtn.onclick = function () {
+  if (audio.paused) {
+    audio.play();
+    playBtn.innerHTML = pauseIcon();
+    animateMessage(notification, notiSpan, "Chúng ta của hiện tại");
+  } else {
+    audio.pause();
+    playBtn.innerHTML = playIcon();
+    removeAnimatedMessage(notification);
+  }
+};
+audio.ontimeupdate = function () {
+  timer.value = (audio.currentTime / audio.duration) * 100;
 };
