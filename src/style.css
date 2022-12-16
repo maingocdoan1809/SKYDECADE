@@ -397,25 +397,38 @@ p {
 #control-play-label {
     z-index: 2;
     opacity: 0.2;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.5s ease-in-out 0.2s;
+    width: 30px;
+    height: 30px;
+    background-color: #D9D9D9;
+    position: absolute;
+    top: 50%;
+    left: 210px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
 }
 
 #control-play-label:hover {
     opacity: 1;
+
 }
 
 #control-play-label::before {
     content: "\f100";
     position: absolute;
-    top: 50%;
-    left: 220px;
     z-index: 2px;
-    color: red;
+    color: rgb(71, 34, 34);
     transition: all 0.8s ease-in-out;
 }
 
 #control-play:checked~.nav-selection {
     transform: translateX(-500px);
+}
+
+#control-play:checked~#control-play-label {
+    transform: translateX(-200px);
 }
 
 .main-play {

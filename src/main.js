@@ -1,10 +1,23 @@
 const hoverVideoEvent = document.querySelectorAll(".video");
 const notification = document.querySelector("footer .toast-message");
 const notiSpan = document.getElementById("name-song");
-function animateMessage(target, wrap, title) {
+/**
+ *
+ * @param {*} target  element thông báo
+ * @param {*} span   thẻ chứa tên bài hát nằm trong `target`
+ * @param {*} title tên bài hát
+ * @summary hàm này dùng để hiện thông báo đang phát bài hát mà người dùng nhấn vào
+ */
+function animateMessage(target, span, title) {
   target.style.animation = "message-show 5s ease-in-out";
-  wrap.innerText = title;
+  span.innerText = title;
 }
+/**
+ *
+ * @param {*} target thẻ thông báo
+ * @summary hàm này để xóa animation đã gắn cho thẻ `target` ở hàm `animateMessage`
+ * @see {@link animateMessage}
+ */
 function removeAnimatedMessage(target) {
   target.style.animation = "none";
 }
@@ -39,6 +52,11 @@ hoverVideoEvent.forEach((element) => {
 
 const animatedElements = document.querySelectorAll(".float");
 
+/**
+ * @summary khởi tạo một đối tượng `IntersectionObserver`, có tác dụng tracking các element liệu nó có đang được hiển thị lên màn hình hay không
+ * @see {@link IntersectionObserver}
+ *
+ */
 const observer = new IntersectionObserver(
   (entries) => {
     for (let entry of entries) {
@@ -64,7 +82,6 @@ const observer = new IntersectionObserver(
     threshold: 0,
   }
 );
-
 animatedElements.forEach((element) => {
   element.style.transition = "all 0.5s ease-in-out";
   observer.observe(element);
@@ -81,6 +98,9 @@ function playIcon() {
 function pauseIcon() {
   return `<i class="fa-duotone fa-pause"></i>`;
 }
+/**
+ * @summary khi nhạc hết thì đổi icon
+ */
 specialthanksAudio.onended = () => {
   specialthanksAudio.currentTime = 0;
   btn.innerHTML = playIcon();
@@ -118,7 +138,9 @@ controlBtn.onclick = () => {
 
 // audio element:
 
-const audio = document.getElementById("play-audio");
+const audio = new Audio(
+  "\\videos\\SƠN TÙNG M-TP - SKY DECADE - Lời Tri Ân.mp3"
+);
 const playBtn = document.getElementById("play-btn");
 const timer = document.getElementById("timer");
 playBtn.onclick = function () {
@@ -134,4 +156,12 @@ playBtn.onclick = function () {
 };
 audio.ontimeupdate = function () {
   timer.value = (audio.currentTime / audio.duration) * 100;
+};
+audio.onended = function () {
+  playBtn.innerHTML = playIcon();
+};
+
+timer.oninput = function () {
+  audio.currentTime = (timer.value * audio.duration) / 100;
+  console.log(audio.currentTime);
 };
