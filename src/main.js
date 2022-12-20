@@ -138,30 +138,91 @@ controlBtn.onclick = () => {
 
 // audio element:
 
-const audio = new Audio(
-  "\\videos\\SƠN TÙNG M-TP - SKY DECADE - Lời Tri Ân.mp3"
-);
-const playBtn = document.getElementById("play-btn");
+const songs = {
+  ctcht: {
+    logo: "/images/ctcht.png",
+    audio: "/songs/Chung Ta Cua Hien Tai - Son Tung M-TP.mp3",
+    name: "Chúng ta của hiện tại",
+  },
+  atbe: {
+    logo: "/images/amthambenem.jpg",
+    audio: "/songs/AmThamBenEm-SonTungMTP-4066476.mp3",
+    name: "Âm thầm bên em",
+  },
+  cngd: {
+    logo: "/images/amthambenem.jpg",
+    audio: "\\songs\\Chung Ta Cua Hien Tai - Son Tung M-TP.mp3",
+    name: "Chạy ngay đi",
+  },
+  mrmsc: {
+    logo: "/images/amthambenem.jpg",
+    audio: "\\songs\\Chung Ta Cua Hien Tai - Son Tung M-TP.mp3",
+    name: "Muộn rồi mà sao còn",
+  },
+  htca: {
+    logo: "/images/haytraochoanh.jpg",
+    audio: "\\songs\\Chung Ta Cua Hien Tai - Son Tung M-TP.mp3",
+    name: "Hãy trao cho anh",
+  },
+  nnca: {
+    logo: "/images/amthambenem.jpg",
+    audio: "\\songs\\Chung Ta Cua Hien Tai - Son Tung M-TP.mp3",
+    name: "Nơi này có anh",
+  },
+  lt: {
+    logo: "/images/lactroilogo.jpg",
+    audio: "\\songs\\Chung Ta Cua Hien Tai - Son Tung M-TP.mp3",
+    name: "Lạc trôi",
+  },
+  tnoaa: {
+    logo: "/images/nooneatall.jpg",
+    audio: "\\songs\\Chung Ta Cua Hien Tai - Son Tung M-TP.mp3",
+    name: "There's no one at all",
+  },
+};
+
+const liTags = document.querySelectorAll(".nav-selection li");
+const logoTag = document.getElementById("logo-album");
 const timer = document.getElementById("timer");
+var audio = document.getElementById("song-play");
+const playBtn = document.getElementById("play-btn");
+liTags.forEach(function (li) {
+  li.addEventListener("click", function () {
+    const liValue = this.getAttribute("value");
+    audio.src = songs[liValue]["audio"];
+    audio.currentTime = 0;
+    logoTag.src = songs[liValue]["logo"];
+    document.querySelector(".playing").classList.remove("playing");
+    this.classList.add("playing");
+    playBtn.innerHTML = playIcon();
+  });
+});
 playBtn.onclick = function () {
   if (audio.paused) {
     audio.play();
     playBtn.innerHTML = pauseIcon();
-    animateMessage(notification, notiSpan, "Chúng ta của hiện tại");
+    const liValue = document.querySelector(".playing").getAttribute("value");
+    animateMessage(notification, notiSpan, songs[liValue]["name"]);
   } else {
     audio.pause();
     playBtn.innerHTML = playIcon();
     removeAnimatedMessage(notification);
   }
 };
-audio.ontimeupdate = function () {
-  timer.value = (audio.currentTime / audio.duration) * 100;
-};
+
 audio.onended = function () {
   playBtn.innerHTML = playIcon();
 };
-
+audio.ontimeupdate = function () {
+  timer.value = (audio.currentTime / audio.duration) * 100;
+  // em cũng không hiểu tại sao khi chuyển bài hát thì cái sự kiện này lại xảy
+  // ra và làm cho timer.value = 50, nên thêm if này để bắt nó buộc trở về 0.
+  // cái này thì em nhận thấy có vẻ là do đổi src của thẻ audio nên thành ra như thế
+  // em xin cách tối ưu cái này và nếu có cách chữa tốt hơn thì mong thầy góp ý
+  if (audio.currentTime == 0) {
+    timer.value = 0;
+  }
+};
 timer.oninput = function () {
   audio.currentTime = (timer.value * audio.duration) / 100;
-  console.log(audio.currentTime);
 };

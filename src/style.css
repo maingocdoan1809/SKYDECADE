@@ -379,6 +379,19 @@ p {
     color: white;
 }
 
+.playing::before {
+    content: "\e473";
+    position: absolute;
+    left: 15px;
+    color: red;
+}
+
+.playing:hover::before {
+    content: "\e473" !important;
+    position: absolute;
+    left: 15px;
+    color: red;
+}
 
 .nav-selection li {
     text-decoration: none;
@@ -483,8 +496,8 @@ input[type=range] {
 
 input[type="range"] {
     height: 5px;
+    transition: all 0ms linear;
 }
-
 
 
 @keyframes fadeIn-li {
