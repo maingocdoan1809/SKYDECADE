@@ -1,5 +1,5 @@
 const hoverVideoEvent = document.querySelectorAll(".video");
-const notification = document.querySelector("footer .toast-message");
+const notification = document.querySelector(".message-box .toast-message");
 const notiSpan = document.getElementById("name-song");
 /**
  *
