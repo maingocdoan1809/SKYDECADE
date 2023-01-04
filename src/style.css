@@ -503,6 +503,13 @@ input[type="range"] {
     transition: all 0ms linear;
 }
 
+#logo-album {
+    transition: all 0.15s ease-in-out;
+}
+
+#logo-album:hover {
+    transform: scale(1.03);
+}
 
 @keyframes fadeIn-li {
     20% {
